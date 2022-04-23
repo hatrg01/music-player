@@ -3,16 +3,28 @@ $(document).ready(function(){
     $("#snipper").hide();
     $("#pass_filed").hide();
     $("#pass_but").hide();
+    $("#pass_incorrect").hide();
 
-    // Register-----------------------------------------------------------
+    // Register close----------------------------------------------------
     $("#model_close").on('click',function(){
         $("#msg").hide();
         $("#register_form")[0].reset();
         $("#name_error").hide();
         $("#email_error").hide();
         $("#pass_error").hide();
+        location.reload();
     });
 
+    // Forgot password close---------------------------------------------
+    $("#model_close1").on('click',function(){
+        $("#msg1").hide();
+        $("#forgot_pass_form")[0].reset();
+        $("#email_error1").hide();
+        $("#pass_error1").hide();
+        location.reload();
+    });
+
+    // Register-----------------------------------------------------------
     $("#verify_ajax").on('click',function(){
         // username-------------------------------------------------
         var name = $("#user_name").val();
@@ -92,11 +104,13 @@ $(document).ready(function(){
         if(verify_user_email==""){
             $("#email_error1").html('*Required Email');
             $("#email_error1").css('color', 'red');
+            $("#msg1").html('');
             return false;
         }
         if(!(verify_user_email.match(reg_email1))){
             $("#email_error1").html('*Enter Valid Email');
             $("#email_error1").css('color', 'red');
+            $("#msg1").html('');
             return false;
         }
         $("#email_error1").html('')
@@ -126,10 +140,71 @@ $(document).ready(function(){
 
     // Change Password--------------------------------------------------
     $("#pass_but").on('click', function(){
+        var pass1 = $("#verify_pass").val();
+        if(pass1 == ''){
+            $("#pass_error1").html('*Required Password');
+            $("#pass_error1").css('color', 'red');
+            return false;
+        }
+        $("#pass_error1").html('');
 
-alert('ok')
+        $.ajax({
+            type: 'POST',
+            url: 'web_serv/update_password.php',
+            data: $("#forgot_pass_form").serialize(),
+            success: function(result){
+                if(result.status=='success'){
+                    $("#msg1").html('Password Updated Successfully');
+                    $("#msg1").css('color','green');
+                }
+                else{
+                    if(result.status=='fail'){
+                        $("#msg1").html('Password Not Updated');
+                        $("#msg1").css('color','red');
+                    }                 
+                    
+                }
+            }
+
+        });
 
     });
+
+    //  Login--------------------------------------------------------------
+    $("#login_but").on('click',function(){
+
+        // email------------------------------------------------------------
+        var login_email = $("#login_email").val();
+        var reg_email2 = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if(login_email==""){
+            $("#login_email_error").html('*Required Email');
+            $("#login_email_error").css('color', 'red');
+            $("#msg1").html('');
+            return false;
+        }
+        if(!(login_email.match(reg_email2))){
+            $("#login_email_error").html('*Enter Valid Email');
+            $("#login_email_error").css('color', 'red');
+            $("#msg1").html('');
+            return false;
+        }
+        $("#login_email_error").html('')
+
+
+        // password-----------------------------------------------------------
+        var login_password = $("#login_pass").val();
+
+        if(login_password == ''){
+            $("#login_pass_error").html('*Required Password');
+            $("#login_pass_error").css('color', 'red');
+            return false;
+        }
+        $("#login_pass_error").html('');
+
+
+    });
+
 
 
 })

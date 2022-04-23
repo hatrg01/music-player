@@ -1,5 +1,23 @@
 <?php include_once "templates/header.php"; ?>
     
+<?php
+  
+  if(isset($_POST['login_button'])){
+    $user_email = $_POST['email'];
+    $user_pass = $_POST['password'];
+
+    require_once './config/connection.php';
+    $sql_check = mysqli_query($con, "SELECT * FROM users WHERE email='$user_email' AND password='$user_pass'");
+    if(mysqli_num_rows($sql_check)>0){
+      
+    }
+    else{
+      $msg = '<div class="alert alert-danger mt-5" role="alert"> Your password is incorrect. </div>';
+
+    }
+  }
+?>
+
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-5">
@@ -8,18 +26,21 @@
         <div class="col-sm-2 ch_position">
             <i class="fa-solid fa-headphones fa-4x mb-3"></i>
             <h2 class="mb-3">Login To e)(o</h2>
-            <form>
+            <form method="post">
                 <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" id="login_email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <span class="ch_error" id="login_email_error" style="display:block" "></span>
                     <div id="emailHelp" class="form-text"><i class="fa-solid fa-lock"></i> We'll never share your email with anyone.</div>
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="login_pass" name="password" placeholder="Password">
+                    <span class="ch_error" id="login_pass_error"></span>
                 </div>
-                <button type="button" class="btn blue btn-block" style="width: 100%">Submit</button>
+                <button type="submit" class="btn blue btn-block" id="login_but" name="login_button" style="width: 100%">Log in</button>
             </form>
             <span style="float:left"><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#register" style="text-decoration:none">New To Here?</a></span>
             <span style="float:right"><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#forgot" style="text-decoration:none">Forgot Password!</a></span>
+            <?php echo @$msg; ?>
         </div>
         <div class="col-sm-5">
             
@@ -71,7 +92,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"><i class="fa-solid fa-key"></i> Forgot Password</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="model_close1"></button>
       </div>
       <div class="modal-body">
         <div class="container">
@@ -81,7 +102,8 @@
                     <span class="ch_error" id="email_error1"></span>
                   </div>
                 <div class="mb-3" id="pass_filed">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="New password">
+                    <input type="password" class="form-control" id="verify_pass" name="verify_pass" placeholder="New password">
+                    <span class="ch_error" id="pass_error1"></span>
                 </div>
             </form>
         </div>
