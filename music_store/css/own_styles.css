@@ -1,0 +1,17 @@
+body{
+    /* font-family: 'Hurricane', cursive !important; */
+    background-color: #f5f5f5 !important;
+}
+.blue{
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+    color: white;
+    border: none !important;
+}
+.red{
+    background: linear-gradient(to right, #ee0979, #ff6a00);   
+    color: white;
+    border: none !important;
+}
+.ch-jumbotron{
+    background-color: gainsboro !important;
+}

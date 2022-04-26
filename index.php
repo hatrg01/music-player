@@ -9,7 +9,16 @@
     require_once './config/connection.php';
     $sql_check = mysqli_query($con, "SELECT * FROM users WHERE email='$user_email' AND password='$user_pass'");
     if(mysqli_num_rows($sql_check)>0){
-      
+      $user_data = mysqli_fetch_assoc($sql_check);
+      if($user_data['role'] == 'user'){
+        session_start();
+        $_SESSION['user'] = $user_data['name'];
+        setcookie("login_msg", $_SESSION['user'], time()+(10));
+        header('location: music_store/index.php');
+      }
+      elseif($user_data['role'] == 'admin'){
+        header('location: admin/index.php');
+      }
     }
     else{
       $msg = '<div class="alert alert-danger mt-5" role="alert"> Your password is incorrect. </div>';

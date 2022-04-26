@@ -11,7 +11,7 @@ if(mysqli_num_rows($sql_verify)>0){
     $response_array['status']='fail';
 }
 else{
-    $sql_insert = mysqli_query($con,"INSERT INTO users(name,email,password) VALUES('$name','$email','$password')");
+    $sql_insert = mysqli_query($con,"INSERT INTO users(name,email,password,role) VALUES('$name','$email','$password', 'user')");
     if($sql_insert){
         $response_array['status']='success';
     }
