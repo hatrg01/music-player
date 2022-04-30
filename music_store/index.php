@@ -1,9 +1,11 @@
 <?php include_once 'templates/header.php'; ?>
 
 
+<div class="container mt-3">
+  <img src="img/e)(o.jpg" alt="" class="img-fluid">
+  <hr>
 
-<div class="container mt-5">
-  <div class="ch-jumbotron p-5">
+  <div class="ch-jumbotron p-5 mt-3 mb-5">
     <h2>Welcome to e)(o!</h2><br>
     <cite class="lead" title="Source Title" style="color:gray;">Music is what feelings sound like.</cite>
     <hr class="my-4">

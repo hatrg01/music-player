@@ -1,28 +1,6 @@
-<?php require_once 'config/connection.php'; ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php include_once "templates/header.php"; ?>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-
-    <!-- Google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <!-- Custome styles -->
-    <link rel="stylesheet" href="css/own_styles.css">
-
-    <!-- Fonts awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    
-    <title>e)(o</title>
-  </head>
-  <body>
-
-    <?php
+<?php
     session_start();
     // if(isset($_COOKIE['login_msg'])){
     // }
@@ -44,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="home.php"><i class="fa-solid fa-house"></i> Home</a>
+              <a class="nav-link" aria-current="page" href="index.php"><i class="fa-solid fa-house"></i> Home</a>
             </li>
 
             <li class="nav-item">
@@ -56,12 +34,7 @@
             </li>
           </ul>
           
-          <ul class="navbar-nav">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i> </button>
-            </form>
-          </ul>
+          
 
           <ul class="navbar-nav ml-auto" style="margin-left: 40px; margin-right: 90px;">
                         
@@ -82,3 +55,17 @@
         </div>
       </div>
     </nav>
+
+
+    <div class="container mt-2" style="background-color: white">
+        <nav aria-label="breadcrumb" style="padding-top: 10px"">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">e)(o</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-music"></i> Songs</li>
+        </ol>
+        </nav>
+        <hr>
+    </div>
+
+
+<?php include_once "templates/footer.php"; ?>

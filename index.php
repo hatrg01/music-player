@@ -17,6 +17,8 @@
         header('location: music_store/index.php');
       }
       elseif($user_data['role'] == 'admin'){
+        session_start();
+        $_SESSION['user'] = $user_data['name'];
         header('location: admin/index.php');
       }
     }

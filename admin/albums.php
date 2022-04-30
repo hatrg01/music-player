@@ -56,17 +56,68 @@
       </div>
     </nav>
 
+
     <div class="container mt-2" style="background-color: white">
-      <div class="container mt-2" style="background-color: white">
         <nav aria-label="breadcrumb" style="padding-top: 10px"">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">e)(o</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-house"></i> Home</li>
+            <li class="breadcrumb-item"><a href="index.php">e)(o</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-compact-disc"></i> Albums</li>
         </ol>
         </nav>
         <hr>
-      </div>
+
+        <div class="row mb-5">
+            <form action="">
+                <div class="mx-5">
+                    <div class="mb-3">
+                        <label for="alb_name" class="form-label">Album Name:</label>
+                        <input type="text" class="form-control" id="alb_name" name="alb_name" placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="artist" class="form-label">Artist(s):</label>
+                        <input type="text" class="form-control" id="artist" name="artist" placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="select" class="form-label">Album Type :</label>
+                        <select class="form-select" aria-label="Default select example" id="select">
+                            <option selected>-----Select Album Type-----</option>
+                            <option value="new">New</option>
+                            <option value="regular">Regular</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="alb_info" class="form-label">About Album:</label>
+                        <textarea class="form-control" id="alb_info" name="alb_info" rows="10"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Album Image</label>
+                        <input class="form-control" type="file" id="formFile" name="alb_img">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Album Banner</label>
+                        <input class="form-control" type="file" id="formFile" name="alb_banner">
+                    </div>
+
+                    <div class="form-group mt-4" style="float: right;">
+                        <button type="submit" class="btn btn-block red">Add Album</button>
+                    </div>
+                    
+                </div>
+                
+            </form>
+        </div>
+
+        
+
+        <hr>
+
     </div>
 
+    
 
 <?php include_once "templates/footer.php"; ?>
