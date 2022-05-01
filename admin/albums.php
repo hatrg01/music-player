@@ -1,6 +1,38 @@
 <?php include_once "templates/header.php"; ?>
 
 <?php
+  if(isset($_POST['add_album'])){
+    $album_name = $_POST['alb_name'];
+    $album_artist = $_POST['artist'];
+    $album_type = $_POST['alb_type'];
+    $album_info = $_POST['alb_info'];
+
+    // Album image--------------------------------------
+    $album_image = $_FILES['alb_img']['name'];
+    $album_temp_image = $_FILES['alb_img']['tmp_name'];
+
+    // Album banner--------------------------------------
+    $album_banner = $_FILES['alb_banner']['name'];
+    $album_temp_banner = $_FILES['alb_banner']['tmp_name'];
+
+    move_uploaded_file($album_temp_image, "img/$album_image");
+    move_uploaded_file($album_temp_banner, "img/$album_banner");
+
+    $sql_album_insert = mysqli_query($con, "INSERT INTO albums(alb_img, alb_banner, alb_name, alb_artist, alb_info, alb_type) VALUES('$album_image', '$album_banner', '$album_name', '$album_artist', '$album_info', '$album_type')");
+    
+    if($sql_album_insert){
+      echo "<script>alert('Album inserted');</script>";
+    }
+    else{
+      echo mysqli_error($con);
+    }
+  }
+
+
+
+?>
+
+<?php
     session_start();
     // if(isset($_COOKIE['login_msg'])){
     // }
@@ -56,7 +88,7 @@
       </div>
     </nav>
 
-
+    <!-- Album Section----------------------------------------------- -->
     <div class="container mt-2" style="background-color: white">
         <nav aria-label="breadcrumb" style="padding-top: 10px"">
         <ol class="breadcrumb">
@@ -67,7 +99,7 @@
         <hr>
 
         <div class="row mb-5">
-            <form action="">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="mx-5">
                     <div class="mb-3">
                         <label for="alb_name" class="form-label">Album Name:</label>
@@ -81,7 +113,7 @@
 
                     <div class="mb-3">
                         <label for="select" class="form-label">Album Type :</label>
-                        <select class="form-select" aria-label="Default select example" id="select">
+                        <select class="form-select" aria-label="Default select example" id="select" name="alb_type">
                             <option selected>-----Select Album Type-----</option>
                             <option value="new">New</option>
                             <option value="regular">Regular</option>
@@ -104,7 +136,7 @@
                     </div>
 
                     <div class="form-group mt-4" style="float: right;">
-                        <button type="submit" class="btn btn-block red">Add Album</button>
+                        <button type="submit" name="add_album" class="btn btn-block red">Add Album</button>
                     </div>
                     
                 </div>
