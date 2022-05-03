@@ -70,28 +70,24 @@
       <div class="modal-body">
         <div class="container">
             <form id="register_form">
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="user_name" name="user_name" aria-describedby="emailHelp" placeholder="Enter your username">
-                    <span class="ch_error" id="name_error"></span>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" id="user_email" name="user_email" aria-describedby="emailHelp" placeholder="Enter email">
-                    <span class="ch_error" id="email_error"></span>
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" id="user_pass" name="user_pass" placeholder="Password">
-                    <span class="ch_error" id="pass_error"></span>
-                </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="user_name" name="user_name" aria-describedby="emailHelp" placeholder="Enter your username">
+                <span class="ch_error" id="name_error"></span>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" id="user_email" name="user_email" aria-describedby="emailHelp" placeholder="Enter email">
+                <span class="ch_error" id="email_error"></span>
+              </div>
+              <div class="mb-3">
+                <input type="password" class="form-control" id="user_pass" name="user_pass" placeholder="Password">
+                <span class="ch_error" id="pass_error"></span>
+              </div>
             </form>
         </div>
       </div>
       <div class="modal-footer">
         <p class="float-left" id="msg"></p>
         <button type="button" class="btn red" id="verify_ajax">Register</button>
-        <button class="btn red" type="button" disabled id="snipper">
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Please Wait...
-        </button>
       </div>
     </div>
   </div>

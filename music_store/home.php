@@ -11,65 +11,36 @@
 
     <img class="img-fluid mb-2" src="img/background.jpg" alt="">
 
-    <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> New Album</h4>
+    <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i>Albums</h4>
     <hr>
     <div class="row">
+        <?php
+            $sql_new = mysqli_query($con, "SELECT * FROM albums");
+            for($i = 0; $i <3; $i++):
+                $new_result = mysqli_fetch_assoc($sql_new)
+        ?>
+
         <div class="col-sm-3 mb-3">
             <div class="card">
-                <img src="img/love-shot.jpg" alt="" class="card-img">
+                <img src="../admin/img/<?php echo $new_result['alb_img'] ?>" alt="" class="card-img">
                 <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4>Love Shot</h4>
-                    <h6>EXO</h6>
+                    <h4><a href="" class="text-white"> <?php echo $new_result['alb_name'] ?> </a></h4>
+                    <h6><?php echo $new_result['alb_artist'] ?></h6>
                     <div class="link d-flex">
                         <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-cloud-arrow-down"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;">View songs</a>
+                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-heart"></i> / 0</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-3 mb-3">
-            <div class="card">
-                <img src="img/the-war.jpg" alt="" class="card-img">
-                <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4>The War</h4>
-                    <h6>EXO</h6>
-                    <div class="link d-flex">
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-cloud-arrow-down"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;">View songs</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endfor ?>
 
         <div class="col-sm-3 mb-3">
             <div class="card">
-                <img src="img/exodus.jpg" alt="" class="card-img">
+                <img src="img/seemore.jpg" alt="" class="card-img">
                 <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4>EXODUS</h4>
-                    <h6>EXO</h6>
-                    <div class="link d-flex">
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-cloud-arrow-down"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;">View songs</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-3 mb-3">
-            <div class="card">
-                <img src="img/tempo.jpg" alt="" class="card-img">
-                <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4>Don't mess up my tempo</h4>
-                    <h6>EXO</h6>
-                    <div class="link d-flex">
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-cloud-arrow-down"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;">View songs</a>
-                    </div>
+                    <h4><a href="albums.php" class="text-white" style="text-decoration:none;">See more <i class="fa-solid fa-chevron-right"></i></a></h4>
                 </div>
             </div>
         </div>
@@ -95,7 +66,6 @@
                     <div class="link d-flex">
                         <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
                         <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-heart"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-comment-dots"></i> / 0</a>
                     </div>
                 </div>
             </div>

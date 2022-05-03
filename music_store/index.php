@@ -1,6 +1,5 @@
 <?php include_once 'templates/header.php'; ?>
 
-
 <div class="container mt-3">
   <img src="img/e)(o.jpg" alt="" class="img-fluid">
   <hr>

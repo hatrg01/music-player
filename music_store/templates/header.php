@@ -32,7 +32,44 @@
     $sql_user_data = mysqli_query($con, "SELECT * FROM users WHERE name='".$_SESSION['user']."'");
     $final_result = mysqli_fetch_assoc($sql_user_data);
     ?>
-    
+
+    <!-- Search--------------------------------------------------- -->
+    <?php
+      if(isset($_POST['search_but'])){
+        $search_key = $_POST['search_bar'];
+        require_once './config/connection.php';
+        // $sql_check = mysqli_query($con, "SELECT * FROM albums WHERE alb_name LIKE '$search_key' OR alb_artist LIKE '$search_key'");
+        // if(mysqli_num_rows($sql_check)>0){
+          session_start();
+        $_SESSION['key'] = $search_key;
+        setcookie("login_msg", $_SESSION['key'], time()+(10));
+            header('location: search.php');
+          
+        // }
+        // else{
+        //   $msg = '<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        //   <div class="modal-dialog">
+        //     <div class="modal-content">
+        //       <div class="modal-header">
+        //         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        //         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        //       </div>
+        //       <div class="modal-body">
+        //         ...
+        //       </div>
+        //       <div class="modal-footer">
+        //         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        //         <button type="button" class="btn btn-primary">Save changes</button>
+        //       </div>
+        //     </div>
+        //   </div>
+        // </div>';
+
+          // $msg = '<div class="alert alert-danger mt-5" role="alert"> Your password is incorrect. </div>';
+        // }
+      }
+    ?>
+
     <!-- Narbar ----------------------------------------------- -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
@@ -57,10 +94,11 @@
           </ul>
           
           <ul class="navbar-nav">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i> </button>
+            <form method="post" class="d-flex">
+              <input class="form-control me-2" id="search_bar" name="search_bar" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" id="search_but" name="search_but" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
+            <?php echo @$msg; ?>
           </ul>
 
           <ul class="navbar-nav ml-auto" style="margin-left: 40px; margin-right: 90px;">
