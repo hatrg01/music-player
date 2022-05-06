@@ -1,8 +1,17 @@
 <?php include_once 'templates/header.php'; ?>
 
 
-<div class="container">
-    <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> New Album</h4>
+<div class="container mt-2">
+    <nav aria-label="breadcrumb" style="padding-top: 10px"">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">e)(o</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-compact-disc"></i> Albums</li>
+        </ol>
+    </nav>
+    <hr>
+
+
+    <h4 class="mt-5" id="new"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> New Album</h4>
     <hr>
     <div class="row">
     <?php
@@ -14,7 +23,7 @@
             <div class="card">
                 <img src="../admin/img/<?php echo $new_result['alb_img'] ?>" alt="" class="card-img">
                 <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4><a href="" class="text-white"> <?php echo $new_result['alb_name'] ?> </a></h4>
+                    <h4><a href="list_songs.php?id=<?php echo $new_result['alb_id']; ?>" class="text-white"> <?php echo $new_result['alb_name'] ?> </a></h4>
                     <h6><?php echo $new_result['alb_artist'] ?></h6>
                     <div class="link d-flex">
                         <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
@@ -29,7 +38,7 @@
     </div>
 
 
-    <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> Regular Album</h4>
+    <h4 class="mt-5" id="regular"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> Regular Album</h4>
     <hr>
     <div class="row">
 
@@ -42,7 +51,7 @@
             <div class="card">
                 <img src="../admin/img/<?php echo $regular_result['alb_img'] ?>" alt="" class="card-img">
                 <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4><a href="" class="text-white"> <?php echo $regular_result['alb_name'] ?> </a></h4>
+                    <h4><a href="list_songs.php?id=<?php echo $regular_result['alb_id']; ?>" class="text-white"> <?php echo $regular_result['alb_name'] ?> </a></h4>
                     <h6><?php echo $regular_result['alb_artist'] ?></h6>
                     <div class="link d-flex">
                         <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
