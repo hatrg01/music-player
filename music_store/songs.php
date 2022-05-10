@@ -1,10 +1,56 @@
 <?php include_once 'templates/header.php'; ?>
 
 
-<h1>song</h1>
+<div class="container mt-2 mb-5" style="background-color: white">
+  <div class="container mt-2" style="background-color: white">
+    <nav aria-label="breadcrumb" style="padding-top: 10px"">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.php">e)(o</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-music"></i> Songs</li>
+    </ol>
+    </nav>
+    <hr>
+  </div>
+
+  <?php   $id=1; ?>
+  <table class="table">
+      <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Song</th>
+            <th scope="col">Album</th>
+            <th scope="col">Artist</th>
+            <th scope="col"></th>
+        </tr>
+      </thead>
+
+    <?php
+      $sql_get_albums = mysqli_query($con, "SELECT * FROM albums");
+      while($list_albums = mysqli_fetch_assoc($sql_get_albums)):
+        $alb_id = $list_albums['alb_id'];
+    ?>
+
+    <?php
+      $sql_get_songs = mysqli_query($con, "SELECT * FROM songs WHERE alb_id='$alb_id'");
+      while($list_songs = mysqli_fetch_assoc($sql_get_songs)):
+        
+    ?>
+      <tbody>
+        <tr>
+          <th scope="row"><?php echo $id++; ?> </th>
+          <td><a href="music_player.php?id=<?php echo $list_songs['song_id']; ?>" style="text-decoration: none;"><img src="../admin/img/<?php echo $list_albums['alb_img']; ?>" alt="" width="50px" style="border: 1px solid gray;"> <b><?php echo $list_songs['song_name']; ?></b></a></td>
+          <td><?php echo $list_albums['alb_name']; ?></td>
+          <td><?php echo $list_albums['alb_artist']; ?></td>
+          <td><i class="fa-solid fa-heart" style="color:red"></i></td>
+        </tr>
+      </tbody>
+      
+      <?php  endwhile ?>
+
+  <?php endwhile ?>
 
 
-
+    </table>
 
 
 

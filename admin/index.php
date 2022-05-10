@@ -18,7 +18,7 @@
       $alb_id = $list_albums['alb_id'];
       $id=1;
   ?>
-    <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> <?php echo $list_albums['alb_name']; ?></h4>
+    <h4 class="mt-5 text-primary"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc" style="color: black;"></i> <?php echo $list_albums['alb_name']; ?></h4>
     <hr>
 
     <table class="table">
@@ -41,7 +41,7 @@
           <th scope="row"><?php echo $id++; ?> </th>
           <td><?php echo $list_songs['song_name']; ?></td>
           <td><?php echo $list_albums['alb_artist']; ?></td>
-          <td><a href="javascript:void(0)" rel='.$list_songs['alb_id'].' class="delete"><i class="fa-solid fa-trash-can"></i></a></td>
+          <td><a href="javascript:void(0)" rel="<?php echo $list_songs['song_id']; ?>" class="delete_song"><i class="fa-solid fa-trash-can"></i></a></td>
         </tr>
       </tbody>
       
@@ -56,6 +56,32 @@
 </div>
 
 
-    
-
 <?php include_once "templates/footer.php"; ?>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(".delete_song").on('click', function(){
+
+            var song_id = $(this).attr('rel');
+           
+
+            $.ajax({
+                type: 'POST',
+                url: 'web_serv/delete_song.php',
+                data: {song_id: song_id},
+                success: function(result){
+                    alert(result);
+                    location.reload()
+                }
+            });
+
+        });
+
+
+    });
+
+</script>
+    

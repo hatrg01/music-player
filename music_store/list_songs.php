@@ -47,7 +47,7 @@
           <th scope="row"><?php echo $id++; ?> </th>
           <td><a href="music_player.php?id=<?php echo $list_songs['song_id']; ?>"><?php echo $list_songs['song_name']; ?></a></td>
           <td><?php echo $album['alb_artist']; ?></td>
-          <td><a href="javascript:void(0)" class="heart"></i><i class="fa-solid fa-heart " style="color:red"></i></a></td>
+          <td><i class="fa-solid fa-heart " style="color:red"></i></td>
         </tr>
       </tbody>
       
@@ -56,7 +56,7 @@
     </table>
     
 
-    <h3 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fas fa-list"></i> About album:</h3>
+    <h3 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-circle-info"></i> About album:</h3>
     <hr>
     <table>
     <tr>
