@@ -40,7 +40,7 @@
             <div class="duration">00:00</div>
         </div>
         <div class="controls">
-            <i class="fa-solid fa-shuffle"></i>
+            <i class="fa-solid fa-shuffle play-shuffle"></i>
             <i class="fa-solid fa-backward-step play-back"></i>
             <div class="play">
                 <div class="play-inner">
@@ -131,10 +131,12 @@ const musicName = document.querySelector(".music-name");
 const musicThumbnail = document.querySelector(".music-thumb");
 const musicImage = document.querySelector(".music-thumb img");
 const playRepeat = document.querySelector(".play-repeat");
+const playShuffle = document.querySelector(".play-shuffle");
 
 let is_playing = true;
 let indexSong = 0;
 let is_repeat = false;
+let is_shuffle = false;
 
 const musics = [];
 
@@ -170,6 +172,15 @@ function getID(){
 
 let timer;
 
+playShuffle.addEventListener("click", function() {
+    if(is_shuffle) {
+        is_shuffle = false;
+        playShuffle.removeAttribute("style");
+    } else {
+        is_shuffle = true;
+        playShuffle.style.color = "rgb(58, 140, 233)";
+    }
+});
 playRepeat.addEventListener("click", function() {
     if(is_repeat) {
         is_repeat = false;
@@ -192,7 +203,11 @@ function handleEndedSong() {
     if(is_repeat) {
         is_playing = true;
         play_pause();
-    } else {
+    } else if(is_shuffle){
+        indexSong = Math.floor(Math.random() * musics.length)
+        init(indexSong);
+        play_pause();
+    } else{
         changeSong(1);
     }
 }
