@@ -9,40 +9,99 @@
     </nav>
     <hr>
 
-
+    
     <?php
         $search_key = $_SESSION['key'];
-        $sql_check = mysqli_query($con, "SELECT * FROM albums WHERE alb_name LIKE '%$search_key%' OR alb_artist LIKE '%$search_key%'");
-        if(mysqli_num_rows($sql_check)>0):
+        $sql_check_album = mysqli_query($con, "SELECT * FROM albums WHERE alb_name LIKE '%$search_key%' OR alb_artist LIKE '%$search_key%'");
+        $sql_check_song = mysqli_query($con, "SELECT * FROM songs WHERE song_name LIKE '%$search_key%'");
+        if(mysqli_num_rows($sql_check_album)>0 || mysqli_num_rows($sql_check_song)>0 ):
     ?>
+            <!-- Album----------------------------------------------------------------------- -->
+            <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i>Albums</h4>
+            <div class="row">
+            
+            <?php
+                while($regular_result = mysqli_fetch_assoc($sql_check_album)):
+            ?>
 
-        <div class="row">
-
-        <?php
-            while($regular_result = mysqli_fetch_assoc($sql_check)):
-        ?>
-
-        <div class="col-sm-3 mb-3">
-            <div class="card">
-                <img src="../admin/img/<?php echo $regular_result['alb_img'] ?>" alt="" class="card-img">
-                <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
-                    <h4><a href="" class="text-white"> <?php echo $regular_result['alb_name'] ?> </a></h4>
-                    <h6><?php echo $regular_result['alb_artist'] ?></h6>
-                    <div class="link d-flex">
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-heart"></i> / 0</a>
-                        <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-comment-dots"></i> / 0</a>
+  
+                <div class="col-sm-3 mb-3">
+                    <div class="card">
+                        <img src="../admin/img/<?php echo $regular_result['alb_img'] ?>" alt="" class="card-img">
+                        <div class="card-img-overlay text-white d-flex flex-column justify-content-center ch-back">
+                            <h4><a href="" class="text-white"> <?php echo $regular_result['alb_name'] ?> </a></h4>
+                            <h6><?php echo $regular_result['alb_artist'] ?></h6>
+                            <div class="link d-flex">
+                                <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-headphones"></i> / 0</a>
+                                <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-heart"></i> / 0</a>
+                                <a href="" class="card-link text-white" style="text-decoration:none;"><i class="fa-solid fa-comment-dots"></i> / 0</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <?php endwhile ?>
+            <?php endwhile ?>
+
+            <?php
+                if(mysqli_num_rows($sql_check_album)<=0):
+            ?>
+                <div class="container" style="color: #6C757D;">
+                    <h5 class="">No albums found</h5>      
+                </div>
+
+            <?php endif ?>
+            
+            <hr>
+
+            <!-- Song-------------------------------------------------------------------- -->
+            <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-music"></i> Songs</h4>
+            
+            <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Song</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+                <tbody>
+            <?php
+                $i = 1;
+                while($list_songs = mysqli_fetch_assoc($sql_check_song)):
+                    $album_id = $list_songs['alb_id'];
+                    $sql_album_name = mysqli_query($con, "SELECT * FROM albums WHERE alb_id='$album_id'");
+                    $album = mysqli_fetch_assoc($sql_album_name);
+                
+            ?>
+                    <tr>
+                    <th scope="row"><?php echo $i++; ?> </th>
+                    <td><a href="music_player.php?id=<?php echo $list_songs['song_id']; ?>"><?php echo $list_songs['song_name']; ?></a></td>
+                    <td><?php echo $album['alb_artist']; ?></td>
+                    <td><i class="fa-solid fa-heart " style="color:red"></i></td>
+                    </tr>
+            
+            <?php  endwhile ?>
+                    
+                </tbody>
+
+            </table>
+
+            <?php
+                if(mysqli_num_rows($sql_check_song)<=0):
+            ?>
+            <div class="container" style="color: #6C757D;">
+                <h5 class="">No songs found</>       
+            </div>
+
+            <?php endif ?>
+
 
     <?php endif ?>
 
     <?php
-        if(mysqli_num_rows($sql_check)<=0):
+        if(mysqli_num_rows($sql_check_song)<=0 && mysqli_num_rows($sql_check_album)<=0):
     ?>
     <div class="container p-5 mt-3" style="background-color:#51A5CA; text-align: center;">
         <h3 class="text-white">No results found for:</h3>        
@@ -51,10 +110,9 @@
     </div>
 
     <?php endif ?>
-    
-
 
 </div>
+
 
 <hr class="my-4">
 
