@@ -16,6 +16,8 @@
         $sql_check_song = mysqli_query($con, "SELECT * FROM songs WHERE song_name LIKE '%$search_key%'");
         if(mysqli_num_rows($sql_check_album)>0 || mysqli_num_rows($sql_check_song)>0 ):
     ?>
+            <h4><i class="fa-solid fa-clipboard-check"></i> Result for "<?php echo $search_key; ?>":</h4>
+
             <!-- Album----------------------------------------------------------------------- -->
             <h4 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i>Albums</h4>
             <div class="row">

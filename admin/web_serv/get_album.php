@@ -10,8 +10,12 @@
                     <td>'.$list_album['alb_name'].'</td>
                     <td>'.$list_album['alb_artist'].'</td>
                     <td>'.$list_album['alb_type'].'</td>
-                    <td><a href="javascript:void(0)" rel='.$list_album['alb_id'].' class="edit"><i class="fa-solid fa-square-pen"></i></a></td>
-                    <td><a href="javascript:void(0)" rel='.$list_album['alb_id'].' class="delete"><i class="fa-solid fa-trash-can"></i></a></td>
+                    <td><a href="javascript:void(0)" rel='.$list_album['alb_id'].' class="edit">
+                        <i class="fa-solid fa-square-pen"></i>
+                    </a></td>
+                    <td><a href="javascript:void(0)" rel='.$list_album['alb_id'].' class="delete">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a></td>
                 </tr>';
         }
     }

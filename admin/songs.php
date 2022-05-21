@@ -13,7 +13,8 @@
 
     move_uploaded_file($song_temp_mp3, "mp3/$song_mp3");
 
-    $sql_song_insert = mysqli_query($con, "INSERT INTO songs(song_name, alb_id, song_mp3) VALUES('$song_name', '$album', '$song_mp3')");
+    $sql_song_insert = mysqli_query($con, "INSERT INTO songs(song_name, alb_id, song_mp3) 
+                                                            VALUES('$song_name', '$album', '$song_mp3')");
     
     if($sql_song_insert){
       echo "<script>alert('Song inserted');</script>";

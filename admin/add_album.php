@@ -18,7 +18,8 @@
     move_uploaded_file($album_temp_image, "img/$album_image");
     move_uploaded_file($album_temp_banner, "img/$album_banner");
 
-    $sql_album_insert = mysqli_query($con, "INSERT INTO albums(alb_img, alb_banner, alb_name, alb_artist, alb_info, alb_type) VALUES('$album_image', '$album_banner', '$album_name', '$album_artist', '$album_info', '$album_type')");
+    $sql_album_insert = mysqli_query($con, "INSERT INTO albums(alb_img, alb_banner, alb_name, alb_artist, alb_info, alb_type) 
+                                        VALUES('$album_image', '$album_banner', '$album_name', '$album_artist', '$album_info', '$album_type')");
     
     if($sql_album_insert){
       echo "<script>alert('Album inserted');</script>";
@@ -27,9 +28,6 @@
       echo mysqli_error($con);
     }
   }
-
-
-
 ?>
 
 
