@@ -9,7 +9,7 @@
     $sql_update = mysqli_query($con, "UPDATE albums SET alb_name='$name', alb_artist='$artist', alb_type='$type' WHERE alb_id='$id'");
 
     if($sql_update){
-        echo 'Album updated!';
+        echo 'Updated album!';
     }
 
 ?>

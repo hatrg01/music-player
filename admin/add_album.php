@@ -22,7 +22,7 @@
                                         VALUES('$album_image', '$album_banner', '$album_name', '$album_artist', '$album_info', '$album_type')");
     
     if($sql_album_insert){
-      echo "<script>alert('Album inserted');</script>";
+      echo "<script>alert('Inserted album');</script>";
     }
     else{
       echo mysqli_error($con);

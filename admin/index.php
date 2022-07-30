@@ -10,8 +10,7 @@
     </nav>
     <hr>
   </div>
-
-  
+ 
   <?php
     $sql_get_albums = mysqli_query($con, "SELECT * FROM albums");
     while($list_albums = mysqli_fetch_assoc($sql_get_albums)):

@@ -100,7 +100,7 @@ $(document).ready(function(){
     $("#next").on('click',function(){
         var verify_user_email = $("#verify_email").val();
         var reg_email1 = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
+ 
         if(verify_user_email==""){
             $("#email_error1").html('*Required Email');
             $("#email_error1").css('color', 'red');

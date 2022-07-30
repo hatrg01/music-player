@@ -106,7 +106,7 @@
             $album_id = $list_songs['alb_id'];
             $sql_album_name = mysqli_query($con, "SELECT * FROM albums WHERE alb_id='$album_id'");
             $album = mysqli_fetch_assoc($sql_album_name);
-        
+         
     ?>
             <tr>
             <th scope="row"><?php echo $i; ?> </th>

@@ -22,8 +22,7 @@
                 <th scope="col">Delete</th>
             </tr>
         </thead>
-        <tbody id="album_data">
-            
+        <tbody id="album_data">            
         </tbody>
     </table>
 

@@ -6,7 +6,7 @@
     $sql_delete = mysqli_query($con, "DELETE FROM songs WHERE song_id='$id'");
 
     if($sql_delete){
-        echo 'Song deleted!';
+        echo 'Deleted song!';
     }
 
 ?>

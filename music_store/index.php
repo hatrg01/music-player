@@ -17,7 +17,7 @@
       <div class="m-2" style="display: inline"><i class="fa-brands fa-twitter fa-2x "></i></div>
       <div class="m-2" style="display: inline"><i class="fa-brands fa-google fa-2x"></i></div>
     </div>
-    
+     
 
   </div>
 </div>

@@ -29,7 +29,7 @@
       while($list_albums = mysqli_fetch_assoc($sql_get_albums)):
         $alb_id = $list_albums['alb_id'];
     ?>
-
+ 
     <?php
       $sql_get_songs = mysqli_query($con, "SELECT * FROM songs WHERE alb_id='$alb_id'");
       while($list_songs = mysqli_fetch_assoc($sql_get_songs)):

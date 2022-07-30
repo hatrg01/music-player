@@ -55,7 +55,7 @@
 
     </table>
     
-
+ 
     <h3 class="mt-5"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-circle-info"></i> About album:</h3>
     <hr>
     <table>

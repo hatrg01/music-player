@@ -9,7 +9,7 @@
         </ol>
     </nav>
     <hr>
-
+ 
 
     <h4 class="mt-5" id="new"><i class="fa-solid fa-caret-right mx-2" style="color: #6C757D;"></i> <i class="fa-solid fa-compact-disc"></i> New Album</h4>
     <hr>

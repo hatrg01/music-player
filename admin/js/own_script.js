@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
-    // setInterval(function(){
-    //     get_data();
-    // },1000)
+   
 
     // Edit close----------------------------------------------------
     $("#album_model_close").on('click',function(){
@@ -45,8 +43,4 @@ $(document).ready(function(){
         }
     });
 // }
-
-    
-
-
 })

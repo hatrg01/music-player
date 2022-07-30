@@ -157,7 +157,7 @@ while($list = mysqli_fetch_assoc($sql_list)):
         mp3   : mp3_url,
         image : img_url
     });
-
+ 
 <?php endwhile ?> 
 
 let ID = `<?php echo $song_id; ?>`

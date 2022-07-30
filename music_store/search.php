@@ -9,7 +9,7 @@
     </nav>
     <hr>
 
-    
+     
     <?php
         $search_key = $_SESSION['key'];
         $sql_check_album = mysqli_query($con, "SELECT * FROM albums WHERE alb_name LIKE '%$search_key%' OR alb_artist LIKE '%$search_key%'");

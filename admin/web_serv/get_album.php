@@ -2,8 +2,8 @@
     require_once '../config/connection.php';
     $id=1;
     $sql_get_album = mysqli_query($con, "SELECT * FROM albums");
-    if(mysqli_num_rows($sql_get_album)>0){
-        
+    
+    if(mysqli_num_rows($sql_get_album)>0){        
         while($list_album = mysqli_fetch_assoc($sql_get_album)){
             echo '<tr>
                     <th scope="row">'.$id++.' </th>

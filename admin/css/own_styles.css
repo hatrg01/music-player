@@ -19,7 +19,7 @@ body{
     transform: translate(-50%, -50%);
 }
 .col-sm-2{
-    width: 400px;
+    width: 400px !important;
 }
 .ch_error{
     font-size: 0.7rem !important;

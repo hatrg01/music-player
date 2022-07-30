@@ -27,7 +27,7 @@
                         <option value="regular">Regular</option>
                     </select>
             </div>
-            
+        
         ';
 
 
